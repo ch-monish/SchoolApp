@@ -155,7 +155,9 @@ class _ChangeSchoolState extends State<ChangeSchool> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/homepage');
+        },
         backgroundColor: Colors.orange[800],
         child: Icon(IconData(61068,
             fontFamily: 'MaterialIcons', matchTextDirection: true)),
