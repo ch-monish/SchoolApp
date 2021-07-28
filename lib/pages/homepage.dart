@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './homepagedrawer.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Homepage extends StatefulWidget {
   Homepage({Key? key}) : super(key: key);
@@ -9,10 +10,29 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  int _current = 0;
+  List imgList = [
+    'https://images.unsplash.com/photo-1599658880436-c61792e70672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZmVlJTIwb25saW5lJTIwJTIwcGF5bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1599658880436-c61792e70672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZmVlJTIwb25saW5lJTIwJTIwcGF5bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1599658880436-c61792e70672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZmVlJTIwb25saW5lJTIwJTIwcGF5bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1599658880436-c61792e70672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZmVlJTIwb25saW5lJTIwJTIwcGF5bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1599658880436-c61792e70672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZmVlJTIwb25saW5lJTIwJTIwcGF5bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1599658880436-c61792e70672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZmVlJTIwb25saW5lJTIwJTIwcGF5bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+  ];
+
+  List<T> map<T>(List list, Function handler) {
+    List<T> result = [];
+    for (var i = 0; i < list.length; i++) {
+      result.add(handler(i, list[i]));
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Logo')),
+        appBar:
+            AppBar(backgroundColor: Colors.orange[900], title: Text('Logo')),
         drawer: Drawer(
           child: Homepagedrawer(),
         ),
@@ -20,29 +40,61 @@ class _HomepageState extends State<Homepage> {
           child: Container(
             child: Column(
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                  height: 150.0,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Container(
-                        width: 250.0,
-                        color: Colors.red,
+                CarouselSlider(
+                  items: imgList.map((item) {
+                    // int index = Widget.imgList.indexof(item);
+                    return Container(
+                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15.0),
+                            bottomLeft: Radius.circular(15.0),
+                            topRight: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
+                          ),
+                          shape: BoxShape.rectangle,
+                          image: DecorationImage(
+                            image: NetworkImage(item),
+                            fit: BoxFit.fill,
+                          )),
+                      // child: Center(
+                      //   child: Image.network(item),
+                      // )
+                    );
+                  }).toList(),
+                  options: CarouselOptions(
+                      aspectRatio: 2.0,
+                      autoPlay: true,
+                      enableInfiniteScroll: true,
+                      pageSnapping: true,
+                      initialPage: 0,
+                      autoPlayInterval: Duration(seconds: 4),
+                      autoPlayAnimationDuration: Duration(milliseconds: 2000),
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                        });
+                      }),
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: map<Widget>(imgList, (index, url) {
+                    return Container(
+                      width: 7.0,
+                      height: 7.0,
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _current == index ? Colors.orange : Colors.grey,
                       ),
-                      Container(
-                        width: 250.0,
-                        color: Colors.blue,
-                      ),
-                      Container(
-                        width: 250.0,
-                        color: Colors.green,
-                      ),
-                    ],
-                  ),
+                    );
+                  }),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 Container(color: Colors.white, child: Dashboard())
               ],
@@ -93,7 +145,8 @@ class Dashboard extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    print("Click event on Container");
+                    print("notification open");
+                    Navigator.pushNamed(context, '/notification');
                   },
                 ),
                 InkWell(
@@ -157,7 +210,7 @@ class Dashboard extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    print("Click event on Container");
+                    Navigator.pushNamed(context, '/homework');
                   },
                 ),
               ],
@@ -196,7 +249,7 @@ class Dashboard extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    print("Click event on Container");
+                    Navigator.pushNamed(context, '/examresult');
                   },
                 ),
                 InkWell(
@@ -228,7 +281,7 @@ class Dashboard extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    print("Click event on Container");
+                    Navigator.pushNamed(context, '/buslocation');
                   },
                 ),
                 InkWell(
@@ -435,6 +488,7 @@ class Dashboard extends StatelessWidget {
                   ),
                   onTap: () {
                     print("Click event on Container");
+                    Navigator.pushNamed(context, '/econtent');
                   },
                 ),
                 InkWell(
