@@ -289,79 +289,88 @@ class _CourseslistState extends State<Courseslist> {
               mainAxisSpacing: 10,
               padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               children: data.map((index) {
-                return Container(
-                    padding: EdgeInsets.fromLTRB(5, 15, 5, 5),
-                    // color: Colors.blue,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            height: 290,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              // color: Colors.grey[300],
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
-                                bottomLeft: Radius.circular(20),
-                              ),
-                            ),
-                            padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                            child: Stack(children: <Widget>[
-                              new Container(
-                                height: double.infinity,
-                                width: double.infinity,
-                                decoration: new BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://picsum.photos/250?image=9'),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                  // borderRadius: BorderRadius.circular(80.0),
+                return InkWell(
+                  onTap: () {
+                    print(index.title);
+                    Navigator.pushNamed(context, '/coursepage',
+                        arguments: index);
+                  },
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(5, 15, 5, 5),
+                      // color: Colors.blue,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              height: 290,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                // color: Colors.grey[300],
+                                shape: BoxShape.rectangle,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                  bottomLeft: Radius.circular(20),
                                 ),
                               ),
-                              Align(
-                                  alignment: Alignment.topRight,
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 5, 5, 0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Icon(
-                                          Icons.favorite,
-                                          color: Colors.white,
-                                          size: 20.0,
-                                          semanticLabel:
-                                              'Text to announce in accessibility modes',
-                                        ),
-                                        Text(index.likes.toString(),
-                                            style:
-                                                TextStyle(color: Colors.white)),
-                                      ],
+                              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                              child: Stack(children: <Widget>[
+                                new Container(
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                  decoration: new BoxDecoration(
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                          'https://picsum.photos/250?image=9'),
+                                      fit: BoxFit.fill,
                                     ),
-                                  )),
-                            ])),
-                        Container(
-                            width: 200,
-                            padding: EdgeInsets.fromLTRB(10, 10, 0, 5),
-                            child: Text(index.title,
-                                maxLines: 2,
-                                overflow: TextOverflow.clip,
-                                textDirection: TextDirection.ltr,
-                                style: TextStyle(fontWeight: FontWeight.w700))),
-                        Container(
-                            padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                            child: Text(index.channel,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.black45)))
-                      ],
-                    ));
+                                    shape: BoxShape.rectangle,
+                                    // borderRadius: BorderRadius.circular(80.0),
+                                  ),
+                                ),
+                                Align(
+                                    alignment: Alignment.topRight,
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(0, 5, 5, 0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Icon(
+                                            Icons.favorite,
+                                            color: Colors.white,
+                                            size: 20.0,
+                                            semanticLabel:
+                                                'Text to announce in accessibility modes',
+                                          ),
+                                          Text(index.likes.toString(),
+                                              style: TextStyle(
+                                                  color: Colors.white)),
+                                        ],
+                                      ),
+                                    )),
+                              ])),
+                          Container(
+                              width: 200,
+                              padding: EdgeInsets.fromLTRB(10, 10, 0, 5),
+                              child: Text(index.title,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.clip,
+                                  textDirection: TextDirection.ltr,
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.w700))),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                              child: Text(index.channel,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      color: Colors.black45)))
+                        ],
+                      )),
+                );
               }).toList())),
     );
   }

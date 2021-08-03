@@ -10,7 +10,7 @@ import 'package:schoolapp/pages/buslocation.dart';
 import 'package:schoolapp/pages/chooseuser.dart';
 import 'package:schoolapp/pages/econtent.dart';
 import 'package:schoolapp/pages/coursepage.dart';
-
+import 'package:schoolapp/pages/actualcalender.dart';
 
 void main() => runApp(MaterialApp(
       home: Chooseuser(),
@@ -26,6 +26,7 @@ void main() => runApp(MaterialApp(
         '/examresult': (context) => Examresult(),
         '/buslocation': (context) => Buslocation(),
         '/econtent': (context) => Econtent(),
-        '/courepage': (context) => Coursepage(course:new Course()),
+        '/coursepage': (context) => Coursepage(),
+        '/actualcalender': (context) => Actualcalender(),
       },
     ));
