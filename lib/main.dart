@@ -11,6 +11,11 @@ import 'package:schoolapp/pages/chooseuser.dart';
 import 'package:schoolapp/pages/econtent.dart';
 import 'package:schoolapp/pages/coursepage.dart';
 import 'package:schoolapp/pages/actualcalender.dart';
+import 'package:schoolapp/pages/payment/feepayment.dart';
+import 'package:schoolapp/pages/payment/paymentcontents.dart';
+import 'package:schoolapp/pages/payment/payment.dart';
+import 'package:schoolapp/pages/payment/paymentaccreditation.dart';
+import 'package:schoolapp/pages/payment/paymentmethod.dart';
 
 void main() => runApp(MaterialApp(
       home: Chooseuser(),
@@ -28,5 +33,10 @@ void main() => runApp(MaterialApp(
         '/econtent': (context) => Econtent(),
         '/coursepage': (context) => Coursepage(),
         '/actualcalender': (context) => Actualcalender(),
+        '/feepayment': (context) => Feepayment(),
+        '/paymentcontents': (context) => Paymentcontents(),
+        '/payment': (context) => Payment(),
+        '/paymentaccreditation': (context) => Paymentaccreditation(),
+        '/paymentmethod': (context) => Paymentmethod(),
       },
     ));

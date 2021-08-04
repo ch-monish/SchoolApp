@@ -313,6 +313,7 @@ class Dashboard extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
+                    Navigator.pushNamed(context, '/feepayment');
                     print("Click event on Container");
                   },
                 ),
