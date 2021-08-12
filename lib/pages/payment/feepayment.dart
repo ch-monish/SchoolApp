@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:schoolapp/pages/payment/paymentcontents.dart';
 
 class Feepayment extends StatefulWidget {
   Feepayment({Key? key}) : super(key: key);
