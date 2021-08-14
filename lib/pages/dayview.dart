@@ -251,11 +251,11 @@ class _DayviewState extends State<Dayview> {
                                       // height: 160,
                                       child: Row(
                                         children: [
-                                          Text(data[index].grade.toString(),
+                                          Text("Absent",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white)),
-                                          Text("12",
+                                          Text(data[index].absent.toString(),
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white)),

@@ -17,6 +17,8 @@ import 'package:schoolapp/pages/payment/payment.dart';
 import 'package:schoolapp/pages/payment/paymentaccreditation.dart';
 import 'package:schoolapp/pages/payment/paymentmethod.dart';
 import 'package:schoolapp/pages/dayview.dart';
+import 'package:schoolapp/pages/profileview.dart';
+import 'package:schoolapp/pages/birthdaylist.dart';
 
 void main() => runApp(MaterialApp(
       home: Chooseuser(),
@@ -40,5 +42,7 @@ void main() => runApp(MaterialApp(
         '/paymentaccreditation': (context) => Paymentaccreditation(),
         '/paymentmethod': (context) => Paymentmethod(),
         '/dayview': (context) => Dayview(),
+        '/profileview': (context) => Profileview(),
+        '/birthdaylist': (context) => Birthdaylist(),
       },
     ));

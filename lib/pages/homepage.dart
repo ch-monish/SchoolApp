@@ -523,6 +523,7 @@ class Dashboard extends StatelessWidget {
                   ),
                   onTap: () {
                     print("Click event on Container");
+                    Navigator.of(context).pushNamed("/profileview");
                   },
                 ),
               ],
